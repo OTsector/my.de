@@ -1,0 +1,55 @@
+#!/bin/bash
+username=$USER
+clear
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
+echo -e "${green}U need to use super user as${reset} ${red}root${reset}\ntype your normal user's passwd to use "'"'sudo su'"'""
+sudo echo -e "${red}root${reset} is ${green}activated${reset}"
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as ${green}root${reset} user"
+  exit
+fi
+sudo cp files/scripts/sources.list /etc/apt/sources.list -f
+sudo cp files/scripts/rc.local /etc/ -f
+gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+rm -rf *.asc --force
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get upgrade -y -q -f
+sudo apt-get dist-upgrade -y -q -f
+sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
+apps="autoconf automake pkg-config libgtk-3-dev  git gnome gnome-panel cmatrix htop filezilla tor torbrowser-launcher steam virtualbox-5.1 dkms"
+sudo apt-get install $apps -y -f -q
+sudo dpkg --force-all -i files/dpkg/*.deb
+sudo apt-get -f install
+sudo cp -R files/themes/ /usr/share/ -f
+sudo cp -R files/icons/ /usr/share/ -f
+sudo cp -R files/fonts/ /usr/share/ -f
+if [ ! -d "/home/"$username"/Pictures/Wallpapers" ]; then
+mkdir -p "/home/"$username"/Pictures/Wallpapers"
+fi
+sudo cp files/images/IFcqIOS.jpg /home/$username/Pictures/Wallpapers/ -f
+gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
+gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
+gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
+gsettings set org.gnome.settings-daemon.plugins.xsettings rgba-order 'rgb'
+gsettings set org.gnome.settings-daemon.plugins.power button-power 'shutdown'
+gsettings set org.gnome.settings-daemon.plugins.power idle-dim 'false'
+gsettings set org.gnome.desktop.session idle-delay '0'
+gsettings set org.gnome.desktop.background picture-uri 'file:///home/'$username'/Pictures/Wallpapers/IFcqIOS.jpg'
+gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu Medium 11'
+gsettings set org.gnome.desktop.interface font-name 'Ubuntu Medium 11'
+gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark'
+gsettings set org.gnome.desktop.interface icon-theme 'Vibrancy-Kali-Full-Dark'
+gsettings set org.gnome.desktop.wm.preferences theme 'Arc-Dark'
+gsettings set org.gnome.desktop.wm.preferences title-font 'Ubuntu Bold 11'
+gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar 'false'
+gsettings set org.gnome.gedit.preferences.editor display-line-numbers 'true'
+gsettings set org.gnome.gedit.preferences.editor warp-last-split-mode 'word'
+gsettings set org.gnome.gedit.preferences.editor warp-mode 'word'
+sudo service gdm restart
+clear
