@@ -1,4 +1,4 @@
-# How to install
+# How to install:
 	sudo apt-get install git -y -f
 	git clone https://github.com/OTsector/my.de.git
 	cd my.de
