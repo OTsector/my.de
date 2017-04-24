@@ -4,7 +4,7 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 username=$USER
-echo -e "By -=OT=- from Fluge\n\n"
+echo -e "By -=OT=- from Fluge\n"
 echo -e "==============1================\n\n${red}Warning!!!${reset}\nIf your D.E's user is not ${green}root${reset}:\nDon't use root privilegies.\nLike this: ${red}sudo su${reset}\n\n==============/================\n\n\n==============2================\n\n${red}Warning!!!${reset}\nWhen the installation is complete,\nyou will be logged out of the system.\n\n==============/================\n\n"
 echo "Do you whant to continue?"
 read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
