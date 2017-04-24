@@ -35,7 +35,7 @@ sudo apt-get update
 sudo apt-get upgrade -y -q -f
 sudo apt-get dist-upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
-apps="autoconf automake pkg-config libgtk-3-dev git gnome gnome-panel cmatrix htop vlc filezilla tor torbrowser-launcher steam virtualbox-5.1 dkms gparted"
+apps="autoconf automake pkg-config libgtk-3-dev git gdm3 gnome gnome-panel cmatrix htop vlc filezilla tor torbrowser-launcher steam virtualbox-5.1 dkms gparted"
 sudo apt-get install $apps -y -f -q
 sudo dpkg --force-all -i files/dpkg/*.deb
 sudo apt-get -f install -y
@@ -74,6 +74,7 @@ gsettings set org.gnome.desktop.background show-desktop-icons 'true'
 gsettings set org.gnome.nautilus.desktop home-icons-visable 'false'
 gsettings set org.gnome.nautilus.desktop trash-icon-visable 'false'
 gsettings set org.gnome.nautilus.desktop volumes-visable 'false'
+sudo dpkg-reconfigure gdm
 sudo service lightdm restart
 sudo service gdm restart
 clear
