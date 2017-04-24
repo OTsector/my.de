@@ -8,3 +8,5 @@
 	./configure
 ### One line command:
 	sudo apt-get install git -y -f && git clone https://github.com/OTsector/my.de.git && cd my.de && sudo chmod +x configure && ./configure
+
+![A screenshot of the my.de](https://i.imgsafe.org/d6d3c65bc4.png)
