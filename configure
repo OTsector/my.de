@@ -11,7 +11,7 @@ read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 echo -e "\n"
-wget "" -O ot.de.config.tar.xz
+wget "https://drive.google.com/uc?export=download&id=0B9fmEQRWPMLQaFNoM3Y5UkswWWs" -O ot.de.config.tar.xz
 echo -e "${green}U need to use super user as${reset} ${red}root${reset}\ntype your normal user's passwd to use "'"'sudo su'"'""
 sudo echo -e "${red}root${reset} is ${green}activated${reset}"
 if [ "$EUID" -ne 0 ]
