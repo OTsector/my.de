@@ -11,7 +11,7 @@ read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 echo -e "\n"
-sudo apt-get install perl -y -f
+sudo apt-get install wget perl -y -f
 sudo chmod +x gdown.pl
 perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQaFNoM3Y5UkswWWs/view?usp=sharing" "ot.de.files.tar.gz"
 tar xvf ot.de.files.tar.gz
