@@ -13,7 +13,7 @@ then
 echo -e "\n"
 sudo apt-get install perl -y -f
 sudo chmod +x gdown.pl
-./gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQaFNoM3Y5UkswWWs/view?usp=sharing" "ot.de.files.tar.gz"
+perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQaFNoM3Y5UkswWWs/view?usp=sharing" "ot.de.files.tar.gz"
 tar xvf ot.de.files.tar.gz
 echo -e "${green}U need to use super user as${reset} ${red}root${reset}\ntype your normal user's passwd to use "'"'sudo su'"'""
 sudo echo -e "${red}root${reset} is ${green}activated${reset}"
