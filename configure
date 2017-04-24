@@ -5,7 +5,7 @@ green=`tput setaf 2`
 reset=`tput sgr0`
 username=$USER
 echo -e "By -=OT=- from Fluge\n\n"
-echo -e "${red}Warning!!!${reset}\nIf your D.E's user is not ${green}root${reset}:\nDon't use root privilegies.\nLike this: ${red}sudo su${reset}"
+echo -e "If your D.E's user is not root:\n==============1================\n${red}Warning!!!${reset}\nIf your D.E's user is not ${green}root${reset}:\nDon't use root privilegies.\nLike this: ${red}sudo su${reset}\n==============2================\n${red}Warning!!!${reset}\nWhen the installation is complete, you will be logged out of the system."
 echo "Do you whant to continue?"
 read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
