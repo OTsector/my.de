@@ -15,6 +15,13 @@ sudo apt-get install wget perl -y -f
 sudo chmod +x gdown.pl
 perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQaFNoM3Y5UkswWWs/view?usp=sharing" "ot.de.files.tar.gz"
 tar xvf ot.de.files.tar.gz
+mkdir -p files/plugins
+if [ ! -d ""$HOME"/./mozzila/plugins" ]; then
+mkdir -p $HOME/./mozzila/plugins
+fi
+wget "https://fpdownload.adobe.com/get/flashplayer/pdc/25.0.0.148/flash_player_npapi_linux.x86_64.tar.gz" -P files/plugins/
+tar xvf *.tar.gz
+cd flash_player_npapi_linux.x86_64 && sudo cp -R usr / && cp libflashplayer.so $HOME/./mozzila/plugins/
 echo -e "${green}U need to use super user as${reset} ${red}root${reset}\ntype your normal user's passwd to use "'"'sudo su'"'""
 sudo echo -e "${red}root${reset} is ${green}activated${reset}"
 if [ "$EUID" -ne 0 ]
