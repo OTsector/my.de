@@ -47,7 +47,7 @@ sudo apt-get update
 sudo apt-get upgrade -y -q -f
 sudo apt-get dist-upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
-apps="autoconf automake pkg-config libgtk-3-dev git libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools cmatrix htop vlc filezilla tor torbrowser-launcher steam virtualbox-5.1 dkms gparted"
+apps="autoconf automake pkg-config libgtk-3-dev git xserver-xorg libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools cmatrix htop vlc filezilla tor torbrowser-launcher steam virtualbox-5.1 dkms gparted"
 sudo apt-get install $apps -y -f -q
 sudo dpkg --force-all -i files/dpkg/*.deb
 sudo apt-get -f install -y
