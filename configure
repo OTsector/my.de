@@ -4,6 +4,8 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 username=$USER
+os="$(lsb_release -si)"
+bit="$(uname -m)"
 echo -e "By -=OT=- from Fluge\n\n"
 echo -e "${red}Warning!!!${reset}\nIf your D.E's user is not ${green}root${reset}:\nDon't use root privilegies.\nLike this: ${red}sudo su${reset} or ${red}sudo ./configure${reset}\n\n${red}Warning!!!${reset}\nWhen the installation is complete,\nyou will be logged out of the system.\n\n"
 echo "Do you whant to continue?"
@@ -27,7 +29,6 @@ sudo echo -e "${red}root${reset} is ${green}activated${reset}"
 if [ "$EUID" -ne 0 ]
   then echo "Please run as ${green}root${reset} user"
 fi
-os="$(lsb_release -si)"
 if [ "${os}" == "Debian" ]; then
 sudo cp files/scripts/Debian/sources.list /etc/apt/ -f
 fi
@@ -49,6 +50,12 @@ sudo apt-get dist-upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
 apps="autoconf automake pkg-config libgtk-3-dev git xserver-xorg libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools cmatrix htop vlc filezilla tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop"
 sudo apt-get install $apps -y -f -q
+if [ "${os}" == "x86_64" ]; then
+sudo dpkg --force-all -i files/dpkg/x86_64/*.deb
+fi
+if [ "${os}" == "x86" ]; then
+sudo dpkg --force-all -i files/dpkg/x86/*.deb
+fi
 sudo dpkg --force-all -i files/dpkg/*.deb
 sudo apt-get -f install -y
 mv files/scripts/gnome-settings/* files/scripts/gnome-settings/$username
