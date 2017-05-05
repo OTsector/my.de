@@ -94,8 +94,8 @@ gsettings set org.gnome.nautilus.desktop home-icons-visable 'false'
 gsettings set org.gnome.nautilus.desktop trash-icon-visable 'false'
 gsettings set org.gnome.nautilus.desktop volumes-visable 'false'
 gsettings set org.gnome.settings-daemon.plugins.cursor active 'false'
-#sudo dpkg-reconfigure gdm
-#sudo dpkg-reconfigure gdm3
+sudo dpkg-reconfigure gdm
+sudo dpkg-reconfigure gdm3
 sudo service lightdm restart
 sudo service gdm restart
 clear
