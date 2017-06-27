@@ -15,13 +15,13 @@ then
 echo -e "\n"
 sudo apt-get install wget perl -y -f
 sudo chmod +x gdown.pl
-perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQdXRPUGFZNGcySFU/view?usp=sharing" "ot.de.files.tar.gz"
+perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQb0c1QlNRMm1wVzg/view?usp=sharing" "ot.de.files.tar.gz"
 tar xvf ot.de.files.tar.gz
 mkdir -p files/plugins
 if [ ! -d ""$HOME"/./mozzila/plugins" ]; then
 mkdir -p $HOME/./mozzila/plugins
 fi
-wget "https://fpdownload.adobe.com/get/flashplayer/pdc/25.0.0.148/flash_player_npapi_linux.x86_64.tar.gz" -P files/plugins/
+wget "https://fpdownload.adobe.com/pub/flashplayer/pdc/26.0.0.131/flash_player_ppapi_linux.x86_64.tar.gz" -P files/plugins/
 tar xvf *.tar.gz
 cd flash_player_npapi_linux.x86_64 && sudo cp -R usr / && cp libflashplayer.so $HOME/./mozzila/plugins/
 echo -e "${green}U need to use super user as${reset} ${red}root${reset}\ntype your normal user's passwd to use "'"'sudo su'"'""
@@ -37,6 +37,12 @@ sudo cp files/scripts/Ubuntu/sources.list /etc/apt/ -f
 sudo add-apt-repository ppa:gnome3-team/gnome3-staging
 sudo add-apt-repository ppa:gnome3-team/gnome3
 fi
+sudo apt-get install apt-transport-https -y -q -f
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add -
+echo "deb [arch=amd64] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list
 gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
 gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
 gpg --homedir "$HOME/.local/share/torbrowser/gnupg_homedir/" --refresh-keys --keyserver pgp.mit.edu
@@ -48,7 +54,7 @@ sudo apt-get update
 sudo apt-get upgrade -y -q -f
 sudo apt-get dist-upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
-apps="autoconf automake pkg-config libgtk-3-dev git xserver-xorg libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop sudo apt-get install python-setuptools"
+apps="autoconf automake pkg-config libgtk-3-dev git xserver-xorg libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop sublime-text skypeforlinux vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
 sudo apt-get install $apps -y -f -q
 sudo easy_install pip
 if [ "${os}" == "x86_64" ]; then
