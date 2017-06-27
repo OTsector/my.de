@@ -107,6 +107,7 @@ gsettings set org.gnome.nautilus.desktop home-icons-visable 'false'
 gsettings set org.gnome.nautilus.desktop trash-icon-visable 'false'
 gsettings set org.gnome.nautilus.desktop volumes-visable 'false'
 gsettings set org.gnome.settings-daemon.plugins.cursor active 'false'
+echo -e "—– BEGIN LICENSE —–\nRyan Clark\nSingle User License\nEA7E-812479\n2158A7DE B690A7A3 8EC04710 006A5EEB\n34E77CA3 9C82C81F 0DB6371B 79704E6F\n93F36655 B031503A 03257CCC 01B20F60\nD304FA8D B1B4F0AF 8A76C7BA 0FA94D55\n56D46BCE 5237A341 CD837F30 4D60772D\n349B1179 A996F826 90CDB73C 24D41245\nFD032C30 AD5E7241 4EAA66ED 167D91FB\n55896B16 EA125C81 F550AF6B A6820916\n—— END LICENSE ——" > ~/Desktop/Sublime-Text_License.txt
 sudo dpkg-reconfigure gdm
 sudo dpkg-reconfigure gdm3
 sudo service lightdm restart
