@@ -15,7 +15,7 @@ then
 echo -e "\n"
 sudo apt-get install wget perl -y -f
 sudo chmod +x gdown.pl
-perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQb0c1QlNRMm1wVzg/view?usp=sharing" "ot.de.files.tar.gz"
+perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQSkdTT3RzYjhiUlE/view?usp=sharing" "ot.de.files.tar.gz"
 tar xvf ot.de.files.tar.gz
 mkdir -p files/plugins
 if [ ! -d ""$HOME"/./mozzila/plugins" ]; then
