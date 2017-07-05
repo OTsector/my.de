@@ -54,7 +54,7 @@ sudo apt-get update
 sudo apt-get upgrade -y -q -f
 sudo apt-get dist-upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
-apps="autoconf automake pkg-config libgtk-3-dev git xserver-xorg libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop sublime-text skypeforlinux vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
+apps="autoconf automake pkg-config libgtk-3-dev git openjdk-8-jre-headless openjdk-8-jdk xserver-xorg libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop sublime-text skypeforlinux vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
 sudo apt-get install $apps -y -f -q
 sudo easy_install pip
 if [ "${os}" == "x86_64" ]; then
@@ -72,6 +72,13 @@ sudo cp -R files/themes/ /usr/share/ -f
 sudo cp -R files/icons/ /usr/share/ -f
 sudo cp -R files/fonts/ /usr/share/ -f
 sudo cp files/scripts/rc.local /etc/ -f
+username
+if [ username == "root" ]; then
+if [ ! -d "/root/.config" ]; then
+mkdir -p "/root/.config"
+cp -R files/home/ /root/ -f
+fi
+fi
 if [ ! -d "/home/"$username"/.config" ]; then
 mkdir -p "/home/"$username"/.config"
 cp -R files/home/ /home/$username/ -f
