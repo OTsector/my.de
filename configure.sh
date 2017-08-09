@@ -15,7 +15,8 @@ then
 echo -e "\n"
 sudo apt-get install wget perl -y -f
 sudo chmod +x gdown.pl
-perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQSkdTT3RzYjhiUlE/view?usp=sharing" "ot.de.files.tar.gz"
+echo -e "ot.de.files.tar.gz file size is 113.6 MB\n"
+perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQbG10QzlWc1V6cTg/view?usp=sharing" "ot.de.files.tar.gz"
 tar xvf ot.de.files.tar.gz
 mkdir -p files/plugins
 if [ ! -d ""$HOME"/./mozzila/plugins" ]; then
@@ -52,7 +53,7 @@ sudo apt-get update
 sudo apt-get upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
 apt install -t jessie-backports  openjdk-8-jre-headless ca-certificates-java -y -f
-apps="autoconf automake pkg-config libgtk-3-dev git openjdk-8-jre-headless openjdk-8-jdk xserver-xorg libpam-systemd gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop sublime-text vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
+apps="autoconf automake pkg-config libgtk-3-dev git openjdk-8-jre-headless openjdk-8-jdk xserver-xorg libpam-systemd gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop irssi rcconf sublime-text vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
 sudo apt-get install $apps -y -f -q
 sudo easy_install pip
 if [ "${os}" == "x86_64" ]; then
