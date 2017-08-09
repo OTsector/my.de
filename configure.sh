@@ -41,8 +41,6 @@ sudo apt-get install apt-transport-https -y -q -f
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
-curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add -
-echo "deb [arch=amd64] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list
 gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
 gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
 gpg --homedir "$HOME/.local/share/torbrowser/gnupg_homedir/" --refresh-keys --keyserver pgp.mit.edu
@@ -52,9 +50,9 @@ rm -rf *.asc --force
 sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get upgrade -y -q -f
-sudo apt-get dist-upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
-apps="autoconf automake pkg-config libgtk-3-dev git openjdk-8-jre-headless openjdk-8-jdk xserver-xorg libpam-systemd gdm3 gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop sublime-text skypeforlinux vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
+apt install -t jessie-backports  openjdk-8-jre-headless ca-certificates-java -y -f
+apps="autoconf automake pkg-config libgtk-3-dev git openjdk-8-jre-headless openjdk-8-jdk xserver-xorg libpam-systemd gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop sublime-text vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
 sudo apt-get install $apps -y -f -q
 sudo easy_install pip
 if [ "${os}" == "x86_64" ]; then
@@ -79,15 +77,30 @@ mkdir -p "/root/.config"
 cp -R files/home/ /root/ -f
 fi
 fi
+if [ username != "root" ]; then
 if [ ! -d "/home/"$username"/.config" ]; then
 mkdir -p "/home/"$username"/.config"
 cp -R files/home/ /home/$username/ -f
 fi
+fi
+if [ username == "root" ]; then
+if [ ! -d "/root/Pictures/Wallpapers" ]; then
+mkdir -p "/root/Pictures/Wallpapers"
+sudo cp files/images/IFcqIOS.jpg /home/$username/Pictures/Wallpapers/ -f
+fi
+fi
+if [ username != "root" ]; then
 if [ ! -d "/home/"$username"/Pictures/Wallpapers" ]; then
 mkdir -p "/home/"$username"/Pictures/Wallpapers"
 sudo cp files/images/IFcqIOS.jpg /home/$username/Pictures/Wallpapers/ -f
 fi
+fi
+if [ username == "root" ]; then
 cp files/scripts/File /home/$username/Templates/ -f
+fi
+if [ username != "root" ]; then
+cp files/scripts/File /root/Templates/ -f
+fi
 gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
 gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
@@ -95,8 +108,14 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings rgba-order 'rgb'
 gsettings set org.gnome.settings-daemon.plugins.power button-power 'shutdown'
 gsettings set org.gnome.settings-daemon.plugins.power idle-dim 'false'
 gsettings set org.gnome.desktop.session idle-delay '0'
+if [ username == "root" ]; then
+gsettings set org.gnome.desktop.background picture-uri 'file:///root/Pictures/Wallpapers/IFcqIOS.jpg'
+gsettings set org.gnome.desktop.screensaver picture-uri 'file:///root/Pictures/Wallpapers/IFcqIOS.jpg'
+fi
+if [ username != "root" ]; then
 gsettings set org.gnome.desktop.background picture-uri 'file:///home/'$username'/Pictures/Wallpapers/IFcqIOS.jpg'
 gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/'$username'/Pictures/Wallpapers/IFcqIOS.jpg'
+fi
 gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu Medium 11'
 gsettings set org.gnome.desktop.interface font-name 'Ubuntu Medium 11'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
