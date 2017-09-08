@@ -7,29 +7,20 @@ username=$USER
 os="$(lsb_release -si)"
 bit="$(uname -m)"
 echo -e "By -=OT=- from Fluge\n\n"
-echo -e "${red}Warning!!!${reset}\nIf your D.E's user is not ${green}root${reset}:\nDon't use root privilegies.\nLike this: ${red}sudo su${reset} or ${red}sudo ./configure${reset}\n\n${red}Warning!!!${reset}\nWhen the installation is complete,\nyou will be logged out of the system.\n\n"
+echo -e "${red}Warning!!!${reset}\nIf your D.E's user is not ${green}root${reset}:\nDon't use root privilegies.\nLike this: ${red}sudo su${reset} or ${red}sudo ./configure${reset}\n\n"
 echo "Do you whant to continue?"
 read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-echo -e "\n"
-sudo apt-get install wget perl -y -f
-sudo chmod +x gdown.pl
-echo -e "ot.de.files.tar.gz file size is 113.6 MB\n"
-perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQbG10QzlWc1V6cTg/view?usp=sharing" "ot.de.files.tar.gz"
-tar xvf ot.de.files.tar.gz
-mkdir -p files/plugins
-if [ ! -d ""$HOME"/./mozzila/plugins" ]; then
-mkdir -p $HOME/./mozzila/plugins
-fi
-wget "https://fpdownload.adobe.com/pub/flashplayer/pdc/26.0.0.131/flash_player_ppapi_linux.x86_64.tar.gz" -P files/plugins/
-tar xvf *.tar.gz
-cd flash_player_npapi_linux.x86_64 && sudo cp -R usr / && cp libflashplayer.so $HOME/./mozzila/plugins/
-echo -e "${green}U need to use super user as${reset} ${red}root${reset}\ntype your normal user's passwd to use "'"'sudo su'"'""
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+if ! [[ $username = "root" ]]; then
+echo -e "\n\n${green}U need to use super user as${reset} ${red}root${reset}\ntype your normal user's passwd to use "'"'sudo su'"'""
 sudo echo -e "${red}root${reset} is ${green}activated${reset}"
+fi
 if [ "$EUID" -ne 0 ]
   then echo "Please run as ${green}root${reset} user"
 fi
+echo -e "\n"
+echo "Configure repositories and apps from..."
+{
 if [ "${os}" == "Debian" ]; then
 sudo cp files/scripts/Debian/sources.list /etc/apt/ -f
 fi
@@ -52,10 +43,69 @@ sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get upgrade -y -q -f
 sudo apt-get install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
-apt install -t jessie-backports  openjdk-8-jre-headless ca-certificates-java -y -f
-apps="autoconf automake pkg-config libgtk-3-dev git openjdk-8-jre-headless openjdk-8-jdk xserver-xorg libpam-systemd gnome gnome-shell gnome-panel gnome-system-tools gnome-tweak-tool dconf-editor cmatrix htop irssi rcconf sublime-text vlc filezilla openssh-server proftpd apache2 mysql-server phpmyadmin tor torbrowser-launcher steam dkms gparted recordmydesktop gtk-recordmydesktop python-setuptools"
-sudo apt-get install $apps -y -f -q
+sudo apt-get install -t jessie-backports  openjdk-8-jre-headless ca-certificates-java -y -f
+sudo apt-get install autoconf -y -f -q
+sudo apt-get install automake -y -f -q
+sudo apt-get install pkg-config -y -f -q
+sudo apt-get install libgtk-3-dev -y -f -q
+sudo apt-get install git -y -f -q
+sudo apt-get install openjdk-8-jre-headless -y -f -q
+sudo apt-get install openjdk-8-jdk -y -f -q
+sudo apt-get install xserver-xorg -y -f -q
+sudo apt-get install libpam-systemd -y -f -q
+sudo apt-get install gnome -y -f -q
+sudo apt-get install gnome-shell -y -f -q
+sudo apt-get install gnome-panel -y -f -q
+sudo apt-get install gnome-system-tools -y -f -q
+sudo apt-get install gnome-tweak-tool -y -f -q
+sudo apt-get install dconf-editor -y -f -q
+sudo apt-get install cmatrix -y -f -q
+sudo apt-get install htop -y -f -q
+sudo apt-get install irssi -y -f -q
+sudo apt-get install rcconf -y -f -q
+sudo apt-get install sublime-text -y -f -q
+sudo apt-get install vlc -y -f -q
+sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
+sudo apt-get install filezilla -y -f -q
+sudo apt-get install openssh-server -y -f -q
+sudo apt-get install proftpd -y -f -q
+sudo apt-get install apache2 -y -f -q
+sudo apt-get install mysql-server -y -f -q
+sudo apt-get install phpmyadmin -y -f -q
+sudo apt-get install tor -y -f -q
+sudo apt-get install torbrowser-launcher -y -f -q
+sudo apt-get install steam -y -f -q
+sudo apt-get install dkms -y -f -q
+sudo apt-get install gparted -y -f -q
+sudo apt-get install recordmydesktop -y -f -q
+sudo apt-get install gtk-recordmydesktop -y -f -q
+sudo apt-get install python-setuptools -y -f -q
 sudo easy_install pip
+} &>/dev/null
+echo -e "Installing wget, perl..."
+{
+sudo apt-get install wget perl -y -f
+} &>/dev/null
+sudo chmod +x gdown.pl
+echo "Please wait... Downloading: ot.de.files.tar.gz file size is 113.6 MB"
+{
+perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQTHRfNkFQRmRST1k/view?usp=sharing" "ot.de.files.tar.gz"
+} &>/dev/null
+echo "Extract and configure archive"
+{
+tar xvf ot.de.files.tar.gz
+mkdir -p files/plugins
+if [ ! -d ""$HOME"/./mozzila/plugins" ]; then
+mkdir -p $HOME/./mozzila/plugins
+fi
+wget "https://fpdownload.adobe.com/get/flashplayer/pdc/26.0.0.151/flash_player_npapi_linux.x86_64.tar.gz" -P files/plugins/
+tar xvf *.tar.gz
+cd flash_player_npapi_linux.x86_64 && sudo cp -R usr / && cp libflashplayer.so $HOME/./mozzila/plugins/
+git clone https://github.com/horst3180/arc-theme --depth 1 && cd arc-theme
+
+mkdir -p "files/themes/arc-theme"
+git clone https://github.com/horst3180/arc-theme --depth 1 files/themes/arc-theme && ./files/themes/arc-theme/autogen.sh --prefix=/usr --disable-transparency
+
 if [ "${os}" == "x86_64" ]; then
 sudo dpkg --force-all -i files/dpkg/x86_64/*.deb
 sudo dpkg --force-all -i files/dpkg/x86_64/*.deb
@@ -71,16 +121,17 @@ sudo cp -R files/themes/ /usr/share/ -f
 sudo cp -R files/icons/ /usr/share/ -f
 sudo cp -R files/fonts/ /usr/share/ -f
 sudo cp files/scripts/rc.local /etc/ -f
+sudo cp files/scripts/gtk.css /usr/share/themes/Arc-Dark-solid/gtk-3.0/ -f
 username
 if [ username == "root" ]; then
 if [ ! -d "/root/.config" ]; then
-mkdir -p "/root/.config"
+sudo mkdir -p "/root/.config"
 cp -R files/home/ /root/ -f
 fi
 fi
 if [ username != "root" ]; then
 if [ ! -d "/home/"$username"/.config" ]; then
-mkdir -p "/home/"$username"/.config"
+sudo mkdir -p "/home/"$username"/.config"
 cp -R files/home/ /home/$username/ -f
 fi
 fi
@@ -102,6 +153,10 @@ fi
 if [ username != "root" ]; then
 cp files/scripts/File /root/Templates/ -f
 fi
+cp files/scripts/gtk.css /usr/share/themes/Arc-Dark-solid/gtk-3.0/ -f
+} &>/dev/null
+echo "Configure dconf settings..."
+{
 gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
 gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
@@ -120,9 +175,9 @@ fi
 gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu Medium 11'
 gsettings set org.gnome.desktop.interface font-name 'Ubuntu Medium 11'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
-gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark-solid'
 gsettings set org.gnome.desktop.interface icon-theme 'Vibrancy-Kali-Full-Dark'
-gsettings set org.gnome.desktop.wm.preferences theme 'Arc-Dark'
+gsettings set org.gnome.desktop.wm.preferences theme 'Arc-Dark-solid'
 gsettings set org.gnome.desktop.wm.preferences title-font 'Ubuntu Bold 11'
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar 'false'
 sudo gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar 'false'
@@ -135,12 +190,23 @@ gsettings set org.gnome.nautilus.desktop trash-icon-visable 'false'
 gsettings set org.gnome.nautilus.desktop volumes-visable 'false'
 gsettings set org.gnome.settings-daemon.plugins.cursor active 'false'
 echo -e "—– BEGIN LICENSE —–\nRyan Clark\nSingle User License\nEA7E-812479\n2158A7DE B690A7A3 8EC04710 006A5EEB\n34E77CA3 9C82C81F 0DB6371B 79704E6F\n93F36655 B031503A 03257CCC 01B20F60\nD304FA8D B1B4F0AF 8A76C7BA 0FA94D55\n56D46BCE 5237A341 CD837F30 4D60772D\n349B1179 A996F826 90CDB73C 24D41245\nFD032C30 AD5E7241 4EAA66ED 167D91FB\n55896B16 EA125C81 F550AF6B A6820916\n—— END LICENSE ——" > ~/Desktop/Sublime-Text_License.txt
+echo -e "Firefox tor configuration:\n\n1) go to url: about:config and searh "'"proxy"'".\n\n2) finde "'"network.proxy.autoconfig_urlnetwork.proxy.autoconfig_url"'" Copy this text and paste to this field: "'"data:text;base64,ZnVuY3Rpb24gRmluZFByb3h5Rm9yVVJMKHVybCwgaG9zdCkgew0KCWlzcCA9ICJQUk9YWSBpcF9hZGRyZXNzOnBvcnQ7IERJUkVDVCI7DQoJdG9yID0gIlNPQ0tTIDEyNy4wLjAuMTo5MDUwIjsNCgkvL2lmIChzaEV4cE1hdGNoKGhvc3QsIioub25pb24iKSkgew0KCQlyZXR1cm4gdG9yOw0KCS8vfQ0KCS8vcmV0dXJuICJESVJFQ1QiOw0KCWlmIChzaEV4cE1hdGNoKCJvay5ydSIpKSB7DQoJCXJldHVybiAiRElSRUNUIg0KCX0NCglpZiAoc2hFeHBNYXRjaChob3N0LCJsb2NhbGhvc3QiKSkNCgl7DQoJCXJldHVybiAiSFRUUCAxMjcuMC4wLjE6ODA4MCI7DQoJfQ0KCXJldHVybiAiRElSRUNUIjsNCn0="'"\n\n3) finde "'"network.proxy.socs_remote_dns"'" and set value "'"true"'".\n\n4) finde "'"network.proxy.type"'" and set value "'"2"'".\n\n5) search "'"dns"'" finde "'"network.dns.block.DotOnion"'" and set value "'"false"'"" > ~/Desktop/torproxy_for_firefox.txt
+} &>/dev/null
+echo "Configure from gits..."
+{
+sudo apt-get install git -y -f && git clone https://github.com/OTsector/ncupp.git /opt/ncupp/ && sudo echo -e '#!/bin/bash\ncd /opt/ncupp/\npython ncupp.py $*\nexit 0' > /usr/bin/ncupp && sudo chmod +x /opt/ncupp/ncupp.py && sudo chmod +x /usr/bin/ncupp
+git clone https://github.com/OTsector/torload.git && cd torload && sudo chmod +x configure.sh && ./configure.sh && rm -rf ../torload && cd ..
+} &>/dev/null
 sudo dpkg-reconfigure gdm
 sudo dpkg-reconfigure gdm3
-sudo service lightdm restart
+echo "Do you want to restart Desktop environment? recommended to press Y button"
+read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+sudo service lightdm stop
 sudo service gdm restart
+fi
 clear
 else
 echo -e "\n"
 fi
-exit
+exit 0
