@@ -91,7 +91,7 @@ echo "Please wait... Downloading: ot.de.files.tar.gz file size is 113.6 MB"
 {
 perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQTHRfNkFQRmRST1k/view?usp=sharing" "ot.de.files.tar.gz"
 } &>/dev/null
-echo "Extract and configure archive"
+echo "Extract and configure archive..."
 {
 tar xvf ot.de.files.tar.gz
 mkdir -p files/plugins
@@ -190,7 +190,7 @@ gsettings set org.gnome.nautilus.desktop trash-icon-visable 'false'
 gsettings set org.gnome.nautilus.desktop volumes-visable 'false'
 gsettings set org.gnome.settings-daemon.plugins.cursor active 'false'
 echo -e "—– BEGIN LICENSE —–\nRyan Clark\nSingle User License\nEA7E-812479\n2158A7DE B690A7A3 8EC04710 006A5EEB\n34E77CA3 9C82C81F 0DB6371B 79704E6F\n93F36655 B031503A 03257CCC 01B20F60\nD304FA8D B1B4F0AF 8A76C7BA 0FA94D55\n56D46BCE 5237A341 CD837F30 4D60772D\n349B1179 A996F826 90CDB73C 24D41245\nFD032C30 AD5E7241 4EAA66ED 167D91FB\n55896B16 EA125C81 F550AF6B A6820916\n—— END LICENSE ——" > ~/Desktop/Sublime-Text_License.txt
-echo -e "Firefox tor configuration:\n\n1) go to url: about:config and searh "'"proxy"'".\n\n2) finde "'"network.proxy.autoconfig_urlnetwork.proxy.autoconfig_url"'" Copy this text and paste to this field: "'"data:text;base64,ZnVuY3Rpb24gRmluZFByb3h5Rm9yVVJMKHVybCwgaG9zdCkgew0KCWlzcCA9ICJQUk9YWSBpcF9hZGRyZXNzOnBvcnQ7IERJUkVDVCI7DQoJdG9yID0gIlNPQ0tTIDEyNy4wLjAuMTo5MDUwIjsNCgkvL2lmIChzaEV4cE1hdGNoKGhvc3QsIioub25pb24iKSkgew0KCQlyZXR1cm4gdG9yOw0KCS8vfQ0KCS8vcmV0dXJuICJESVJFQ1QiOw0KCWlmIChzaEV4cE1hdGNoKCJvay5ydSIpKSB7DQoJCXJldHVybiAiRElSRUNUIg0KCX0NCglpZiAoc2hFeHBNYXRjaChob3N0LCJsb2NhbGhvc3QiKSkNCgl7DQoJCXJldHVybiAiSFRUUCAxMjcuMC4wLjE6ODA4MCI7DQoJfQ0KCXJldHVybiAiRElSRUNUIjsNCn0="'"\n\n3) finde "'"network.proxy.socs_remote_dns"'" and set value "'"true"'".\n\n4) finde "'"network.proxy.type"'" and set value "'"2"'".\n\n5) search "'"dns"'" finde "'"network.dns.block.DotOnion"'" and set value "'"false"'"" > ~/Desktop/torproxy_for_firefox.txt
+echo -e "Firefox tor configuration:\n\n1) go to url: about:config and searh "'"proxy"'".\n\n2) finde "'"network.proxy.autoconfig_url"'" Copy this text and paste to this field: "'"data:text;base64,ZnVuY3Rpb24gRmluZFByb3h5Rm9yVVJMKHVybCwgaG9zdCkgew0KCWlzcCA9ICJQUk9YWSBpcF9hZGRyZXNzOnBvcnQ7IERJUkVDVCI7DQoJdG9yID0gIlNPQ0tTIDEyNy4wLjAuMTo5MDUwIjsNCgkvL2lmIChzaEV4cE1hdGNoKGhvc3QsIioub25pb24iKSkgew0KCQlyZXR1cm4gdG9yOw0KCS8vfQ0KCS8vcmV0dXJuICJESVJFQ1QiOw0KCWlmIChzaEV4cE1hdGNoKCJvay5ydSIpKSB7DQoJCXJldHVybiAiRElSRUNUIg0KCX0NCglpZiAoc2hFeHBNYXRjaChob3N0LCJsb2NhbGhvc3QiKSkNCgl7DQoJCXJldHVybiAiSFRUUCAxMjcuMC4wLjE6ODA4MCI7DQoJfQ0KCXJldHVybiAiRElSRUNUIjsNCn0="'"\n\n3) finde "'"network.proxy.socs_remote_dns"'" and set value "'"true"'".\n\n4) finde "'"network.proxy.type"'" and set value "'"2"'".\n\n5) search "'"dns"'" finde "'"network.dns.block.DotOnion"'" and set value "'"false"'"" > ~/Desktop/torproxy_for_firefox.txt
 } &>/dev/null
 echo "Configure from gits..."
 {
