@@ -199,11 +199,10 @@ git clone https://github.com/OTsector/torload.git && cd torload && sudo chmod +x
 } &>/dev/null
 sudo dpkg-reconfigure gdm
 sudo dpkg-reconfigure gdm3
-echo "Do you want to restart Desktop environment? recommended to press Y button"
+echo "Do you want to restart your system right now? recommended to press Y button"
 read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-sudo service lightdm stop
-sudo service gdm restart
+sudo reboot
 fi
 clear
 else
