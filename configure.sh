@@ -87,7 +87,7 @@ echo -e "Installing wget, perl..."
 sudo apt-get install wget perl -y -f
 } &>/dev/null
 sudo chmod +x gdown.pl
-echo "Please wait... Downloading: ot.de.files.tar.gz file size is 113.6 MB"
+echo "Please wait... Downloading: ot.de.files.tar.gz file size is 63.1 MB"
 {
 perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQTHRfNkFQRmRST1k/view?usp=sharing" "ot.de.files.tar.gz"
 } &>/dev/null
@@ -199,7 +199,7 @@ git clone https://github.com/OTsector/torload.git && cd torload && sudo chmod +x
 } &>/dev/null
 sudo dpkg-reconfigure gdm
 sudo dpkg-reconfigure gdm3
-echo "Do you want to restart your system right now? recommended to press Y button"
+echo -e "Do you want to ${red}restart${reset} your ${green}system${reset} right now? recommended to press Y button"
 read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo reboot
