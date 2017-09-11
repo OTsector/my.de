@@ -87,10 +87,10 @@ echo -e "Installing wget, perl..."
 sudo apt-get install wget perl -y -f
 } &>/dev/null
 sudo chmod +x gdown.pl
-echo "Please wait... Downloading: ot.de.files.tar.gz file size is 63.1 MB"
-{
+echo "Please wait... Downloading#: ot.de.files.tar.gz file size is 63.1 MB"
+#{
 perl gdown.pl "https://drive.google.com/file/d/0B9fmEQRWPMLQTHRfNkFQRmRST1k/view?usp=sharing" "ot.de.files.tar.gz"
-} &>/dev/null
+#} &>/dev/null
 echo "Extract and configure archive..."
 {
 tar xvf ot.de.files.tar.gz
