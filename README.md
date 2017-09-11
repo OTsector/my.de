@@ -8,8 +8,9 @@ invoke-rc.d: initscript gdm, action "reload" failed.
 	cd my.de
 	sudo chmod +x configure.sh
 	./configure
+	sudo rm -rf ../my.de && cd ..
 ### One line command:
-	sudo apt-get install git -y -f && git clone https://github.com/OTsector/my.de.git && cd my.de && sudo chmod +x configure.sh && ./configure.sh
+	sudo apt-get install git -y -f && git clone https://github.com/OTsector/my.de.git && cd my.de && sudo chmod +x configure.sh && ./configure.sh && sudo rm -rf ../my.de && cd ..
 
 ### Screenshot:
 ![A screenshot of the my.de](https://i.imgsafe.org/e231513c70.png)
