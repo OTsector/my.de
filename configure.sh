@@ -205,7 +205,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo reboot
 fi
 clear
+echo ""
 else
-echo -e "\n"
+echo "Done! -Now? ... Nobody's win!"
 fi
 exit 0
