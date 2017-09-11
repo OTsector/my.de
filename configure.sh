@@ -208,6 +208,6 @@ fi
 clear
 echo "Done! -Now? ... Nobody's win!"
 else
-echo "${red}OK if you don't${reset} :("
+echo -e "\n-${red}OK if you don't${reset} :("
 fi
 exit 0
