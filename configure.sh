@@ -199,7 +199,7 @@ git clone https://github.com/OTsector/torload.git && cd torload && sudo chmod +x
 } &>/dev/null
 sudo dpkg-reconfigure gdm
 sudo dpkg-reconfigure gdm3
-echo -e "Do you want to ${red}restart${reset} your ${green}system${reset} right now? recommended to press Y button"
+echo -e "Do you want to ${red}restart${reset} your ${green}system${reset} right now? recommended to ${green}press Y${reset} button"
 read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo reboot
