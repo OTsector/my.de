@@ -204,9 +204,10 @@ read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo reboot
 fi
+
 clear
-echo ""
-else
 echo "Done! -Now? ... Nobody's win!"
+else
+echo "${red}OK if you don't${reset} :("
 fi
 exit 0
