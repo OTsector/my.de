@@ -80,6 +80,7 @@ sudo apt-get install gparted -y -f -q
 sudo apt-get install recordmydesktop -y -f -q
 sudo apt-get install gtk-recordmydesktop -y -f -q
 sudo apt-get install python-setuptools -y -f -q
+sudo chown -R $username: $HOME/.local/share/torbrowser/tbb
 sudo easy_install pip
 } &>/dev/null
 echo -e "Installing wget, perl..."
