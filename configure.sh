@@ -6,7 +6,18 @@ reset=`tput sgr0`
 username=$USER
 os="$(lsb_release -si)"
 bit="$(uname -m)"
-echo -e "By -=OT=- from Fluge\n\n"
+o=`tput setaf 65`
+otext=`tput setaf 66`
+t=`tput setaf 62`
+ttext=`tput setaf 61`
+ear=`tput setaf 8`
+eye=`tput setaf 65`
+mouth=`tput setaf 132`
+reset=`tput sgr0`
+bold=$(tput bold)
+normal=$(tput sgr0)
+banner="\t\t\t${green}My DE configuration${reset}\n ${ear}^${reset}${eye}>${reset}${mouth}_${reset}${eye}<${reset}${ear}^${reset}\t\t ${bold}${t}_${reset}\n\t${bold}${o}0${reset}${normal}${bold}${t}7${reset}${normal}\t${o}[${reset}${t}|${reset}${o}]${reset}${normal} ${bold}${o}0${reset}${normal}${otext}ffensive${reset} ${bold}${t}7${reset}${normal}${ttext}ester${reset}\n"
+echo -e ${banner}
 echo -e "${red}Warning!!!${reset}\nIf your D.E's user is not ${green}root${reset}:\nDon't use root privilegies.\nLike this: ${red}sudo su${reset} or ${red}sudo ./configure${reset}\n\n"
 echo "Do you whant to continue?"
 read -p "Yes "'"Y"'" / No "'"N"'": " -n 1 -r
