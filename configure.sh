@@ -1,6 +1,4 @@
 #!/bin/bash
-# ^>_<^	 _
-#	07	[|] 0ffensive 7ester
 clear
 red=`tput setaf 1`
 green=`tput setaf 2`
@@ -211,6 +209,7 @@ echo "Configure from gits..."
 sudo apt-get install git -y -f && git clone https://github.com/OTsector/ncupp.git /opt/ncupp/ && sudo echo -e '#!/bin/bash\ncd /opt/ncupp/\npython ncupp.py $*\nexit 0' > /usr/bin/ncupp && sudo chmod +x /opt/ncupp/ncupp.py && sudo chmod +x /usr/bin/ncupp
 git clone https://github.com/OTsector/torload.git && cd torload && sudo chmod +x configure.sh && ./configure.sh && rm -rf ../torload && cd ..
 git clone https://github.com/k4m4/kickthemout.git /opt/kickthemout && pip install scapy && pip install python-nmap && echo -e '#!/bin/bash\npython /opt/kickthemout/kickthemout.py "$@"\nexit 0' > /usr/bin/kickthemout && chmod +x /usr/bin/kickthemout
+git clone https://github.com/OTsector/vpnbook.git /opt/vpnbook && cd /opt/vpnbook && sudo chmod +x vpnbook.sh && echo -e '#!/bin/bash\nbash /opt/vpnbook/vpnbook.sh\nexit 0' > /usr/bin/vpnbook && sudo chmod +x /usr/bin/vpnbook && cd ~
 } &>/dev/null
 sudo dpkg-reconfigure gdm
 sudo dpkg-reconfigure gdm3
