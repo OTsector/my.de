@@ -100,7 +100,7 @@ sudo apt-get install wget perl -y -f
 } &>/dev/null
 echo "Please wait... Downloading#: ot.de.files.tar.gz file size is 60.18M"
 #{
-perl <(curl -s https://raw.githubusercontent.com/OTsector/perl/master/gdown.pl) "https://drive.google.com/file/d/0B9fmEQRWPMLQTHRfNkFQRmRST1k/view?usp=sharing" "ot.de.files.tar.gz"
+perl <(curl -s https://raw.githubusercontent.com/OTsector/perl/master/gdown.pl) "https://drive.google.com/file/d/1-a4h5dhJWnlSYagUK_C83dcgv0oQIhOB/view?usp=sharing" "ot.de.files.tar.gz"
 #} &>/dev/null
 echo "Extract and configure archive..."
 {
