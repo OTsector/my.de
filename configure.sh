@@ -91,6 +91,10 @@ sudo apt-get install gparted -y -f -q
 sudo apt-get install recordmydesktop -y -f -q
 sudo apt-get install gtk-recordmydesktop -y -f -q
 sudo apt-get install python-setuptools -y -f -q
+sudo apt-get install qt5-style-plugins -y -f -q
+sudo echo "QT_QPA_PLATFORMTHEME=gtk2" > /etc/environment
+sudo apt-get install qt5ct -y -f -q
+
 sudo chown -R $username: $HOME/.local/share/torbrowser/tbb
 sudo easy_install pip
 } &>/dev/null
