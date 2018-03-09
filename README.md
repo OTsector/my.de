@@ -1,5 +1,5 @@
 # My Desktop Envoinment, theme, icons, apps, settings...
-#### Worning!!!
+#### Warning!!!
 Ubuntu 17's have a problems in gdm3 packages.
 invoke-rc.d: initscript gdm, action "reload" failed.
 ### How to install:
