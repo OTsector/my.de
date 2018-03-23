@@ -122,11 +122,11 @@ git clone https://github.com/horst3180/arc-theme --depth 1 && cd arc-theme
 mkdir -p "files/themes/arc-theme"
 git clone https://github.com/horst3180/arc-theme --depth 1 files/themes/arc-theme && ./files/themes/arc-theme/autogen.sh --prefix=/usr --disable-transparency
 
-if [ "${os}" == "x86_64" ]; then
+if [ "$(arch)" == "x86_64" ]; then
 sudo dpkg --force-all -i files/dpkg/x86_64/*.deb
 sudo dpkg --force-all -i files/dpkg/x86_64/*.deb
 fi
-if [ "${os}" == "x86" ]; then
+if [ "$(arch)" == "x86" ]; then
 sudo dpkg --force-all -i files/dpkg/x86/*.deb
 sudo dpkg --force-all -i files/dpkg/x86/*.deb
 fi
