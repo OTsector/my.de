@@ -90,6 +90,7 @@ sudo apt-get install dkms -y -f -q
 sudo apt-get install gparted -y -f -q
 sudo apt-get install recordmydesktop -y -f -q
 sudo apt-get install brasero -y -f -q
+sudo apt-get install network-manager-openvpn network-manager-pptp network-manager-vpnc -y -f -q
 sudo apt-get install gtk-recordmydesktop -y -f -q
 sudo apt-get install python-setuptools -y -f -q
 sudo apt-get install qt5-style-plugins -y -f -q
