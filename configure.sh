@@ -92,6 +92,7 @@ sudo apt-get install recordmydesktop -y -f -q
 sudo apt-get install brasero -y -f -q
 sudo apt-get install network-manager-* -y -f -q
 sudo apt-get install gtk-recordmydesktop -y -f -q
+sudo apt-get install libgnomeui-0 -y -f -q
 sudo apt-get install python-setuptools -y -f -q
 sudo apt-get install qt5-style-plugins -y -f -q
 sudo echo "QT_QPA_PLATFORMTHEME=gtk2" > /etc/environment
