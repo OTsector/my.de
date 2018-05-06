@@ -89,6 +89,7 @@ sudo apt-get install steam -y -f -q
 sudo apt-get install dkms -y -f -q
 sudo apt-get install gparted -y -f -q
 sudo apt-get install recordmydesktop -y -f -q
+sudo apt-get install network-manager-openvpn-gnome -y -f -q
 sudo apt-get install brasero -y -f -q
 sudo apt-get install network-manager-* -y -f -q
 sudo apt-get install gtk-recordmydesktop -y -f -q
